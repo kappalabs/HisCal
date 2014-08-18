@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="calendars">
+        <item >@string/cal_rome</item>
+        <item >@string/cal_bonon</item>
+        <item >@string/cal_christ</item>
+        <item >@string/cal_cisiojan</item>
+    </string-array>
+    <string-array name="roman_months">
+        <item >@string/rome_month_1</item>
+        <item >@string/rome_month_2</item>
+        <item >@string/rome_month_3</item>
+        <item >@string/rome_month_4</item>
+        <item >@string/rome_month_5</item>
+        <item >@string/rome_month_6</item>
+        <item >@string/rome_month_7</item>
+        <item >@string/rome_month_8</item>
+        <item >@string/rome_month_9</item>
+        <item >@string/rome_month_10</item>
+        <item >@string/rome_month_11</item>
+        <item >@string/rome_month_12</item>
+    </string-array>
+    <string-array name="roman_prefix">
+        <item >@string/ante_diem</item>
+        <item >@string/pridie</item>
+        
+    </string-array>
+    <string-array name="roman_beacons">
+        <item >@string/kalendis</item>
+        <item >@string/nonis</item>
+        <item >@string/idus</item>
+    </string-array>
+</resources>

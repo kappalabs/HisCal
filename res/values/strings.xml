@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hiscal</string>
+    <string name="choose_app_label">Zvol převodník:</string>
+    <string name="cal_rome">Římský kalendář</string>
+    <string name="cal_bonon">Bononský kalendář</string>
+    <string name="cal_christ">Křesťanský kalendář</string>
+    <string name="cal_cisiojan">Cisiojánský kalendář</string>
+    <string name="title_activity_calendar">Calendar</string>
+    <string name="action_settings">Settings</string>
+    <string name="year_label">Rok:</string>
+    <string name="day_label">Den:</string>
+    <string name="I">I</string>
+    <string name="V">V</string>
+    <string name="X">X</string>
+    <string name="L">L</string>
+    <string name="C">C</string>
+    <string name="D">D</string>
+    <string name="M">M</string>
+    <string name="backspace">&lt;x|</string>
+    <string name="incorrect_format_message">Špatný formát vstupu</string>
+    <string name="ante_diem">a. d.</string>
+    <string name="pridie">pridie</string>
+    <string name="kalendis">Kalend.</string>
+    <string name="nonis">Non.</string>
+    <string name="idus">Idy</string>
+    <string name="none"> -- </string>
+    <string name="rome_month_1">Ianuar.</string>
+    <string name="rome_month_2">Februar.</string>
+    <string name="rome_month_3">Mart.</string>
+    <string name="rome_month_4">April.</string>
+    <string name="rome_month_5">Mai.</string>
+    <string name="rome_month_6">Iun.</string>
+    <string name="rome_month_7">Iul.</string>
+    <string name="rome_month_8">August.</string>
+    <string name="rome_month_9">Septembr.</string>
+    <string name="rome_month_10">Octobr.</string>
+    <string name="rome_month_11">Novembr.</string>
+    <string name="rome_month_12">Decembr.</string>
+    <string name="input_hint_rome">římský form.</string>
+    <string name="input_hint_std">desítkový form.</string>
+
+</resources>
