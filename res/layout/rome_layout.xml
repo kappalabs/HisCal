@@ -3,6 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    
+    <ScrollView >
+        <TableLayout 
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:orientation="vertical">
+    
 
     <TextView
         android:id="@+id/textView1"
@@ -13,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/textView2"
@@ -24,22 +31,29 @@
 
         <EditText
             android:id="@+id/rome_year_editText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/input_hint_rome" >
-            <requestFocus />
+            android:enabled="false"
+            android:hint="@string/input_hint_rome"
+            android:inputType="textCapCharacters" />
+
+        <!--
+                <requestFocus />
         </EditText>
+        -->
 
         <EditText
             android:id="@+id/std_year_editText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/input_hint_std" />
-        
+            android:enabled="false"
+            android:hint="@string/input_hint_std"
+            android:inputType="text|number" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -49,68 +63,59 @@
 
         <Button
             android:id="@+id/I_button"
-            android:width="40dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/I" />
 
         <Button
             android:id="@+id/V_button"
-            android:width="40dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/V" />
 
         <Button
             android:id="@+id/X_button"
-            android:width="40dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/X" />
 
         <Button
             android:id="@+id/L_button"
-            android:width="40dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/L" />
 
         <Button
             android:id="@+id/C_button"
-            android:width="40dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/C" />
 
         <Button
             android:id="@+id/D_button"
-            android:width="40dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/D" />
 
         <Button
             android:id="@+id/M_button"
-            android:width="40dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/M" />
 
         <Button
             android:id="@+id/back_button"
-            android:width="50dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/backspace" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/toggle_input_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/up" />
 
-    <TextView
-        android:id="@+id/std_year_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -125,11 +130,13 @@
 
         <EditText
             android:id="@+id/rome_day_editText"
+            android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/input_hint_rome" />
+            android:hint="@string/input_hint_rome"
+            android:inputType="textCapCharacters" />
 
         <EditText
             android:id="@+id/std_day_editText"
@@ -138,35 +145,73 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/input_hint_std"
-            android:inputType="number" />
+            android:inputType="text|number" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="131dp" >
+        android:layout_height="wrap_content" >
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/prefix_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:entries="@array/roman_prefix" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/beacons_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:entries="@array/roman_beacons" />
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/months_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:entries="@array/roman_months" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/std_day_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/day"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/std_month_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/month"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/std_year_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="@string/year"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/execute_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="84dp"
+        android:text="@string/execute" />
+    
+    </TableLayout>
+    </ScrollView>
 
 </TableLayout>

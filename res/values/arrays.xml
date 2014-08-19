@@ -20,9 +20,25 @@
         <item >@string/rome_month_11</item>
         <item >@string/rome_month_12</item>
     </string-array>
+    <string-array name="std_months">
+        <item >@string/month_1</item>
+        <item >@string/month_2</item>
+        <item >@string/month_3</item>
+        <item >@string/month_4</item>
+        <item >@string/month_5</item>
+        <item >@string/month_6</item>
+        <item >@string/month_7</item>
+        <item >@string/month_8</item>
+        <item >@string/month_9</item>
+        <item >@string/month_10</item>
+        <item >@string/month_11</item>
+        <item >@string/month_12</item>
+    </string-array>
     <string-array name="roman_prefix">
+        <item >@string/none</item>
         <item >@string/ante_diem</item>
         <item >@string/pridie</item>
+        <item >@string/postridie</item>
         
     </string-array>
     <string-array name="roman_beacons">

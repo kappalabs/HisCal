@@ -9,11 +9,20 @@ public abstract class Converter {
 	 * @author kappa
 	 *
 	 */
-	enum Month {
+	static enum Month {
 		Jan(1, 31), Feb(2, 28), Mar(3, 31), Apr(4, 30), May(5, 31), Jun(6, 30),
 		Jul(7, 31), Aug(8, 31), Sep(9, 30), Oct(10, 31), Nov(11, 30), Dec(12, 31);
-	    private final double order, days;
+		
+	    public final int order, days;
+	    
 	    Month(int order, int days) { this.order = order; this.days = days; }
+	    
+	    public static Month getIthMonth(int order) {
+	    	for (int i=0; i<Month.values().length; i++)
+	    		if (Month.values()[i].order == order)
+	    			return Month.values()[i];
+	    	return null;
+	    }
 	};
 	
 	/**

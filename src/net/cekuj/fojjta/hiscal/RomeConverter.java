@@ -10,6 +10,11 @@ public class RomeConverter extends Converter {
 	
 	@Override
 	String toStdYear(String romanYear) {
+		return toDecimalNumber(romanYear);
+	}
+	
+	String toDecimalNumber(String romanYear) {
+		romanYear=romanYear.toUpperCase();
 		int ret = 0;
 		int strLen = romanYear.length();
 		int magic = -32;
@@ -55,6 +60,52 @@ public class RomeConverter extends Converter {
 		}
 		
 		return String.valueOf(ret);
+	}
+	
+	//TODO
+	String toStdMonth(String romanMonth) {
+		
+		return null;
+	}
+
+	//TODO
+	String toStdMonth(int monthNum) {
+		return null;
+	}
+	
+	//TODO
+	int toStdDay(int n_days, int prefix, int beacon, int monthNum) {
+		int res_day=0;
+		switch (prefix) {
+			case 0: break;
+			case 1: res_day = -n_days+1; break;
+			case 2: res_day = -1; break;
+			case 3: res_day = +1; break;
+		}
+		
+//		int m_days = Month.getIthMonth(monthNum+1).days;
+		
+		// Martinus, Maius, Quintilis=October
+		if (monthNum==2 || monthNum==4 || monthNum==9) {
+			// resolve nony
+			if (beacon == 1) {
+				res_day+=7;
+			}// resolve idy
+			else if (beacon == 2) {
+				res_day+=15;
+			}
+		} else {
+			// resolve nony
+			if (beacon == 1) {
+				res_day+=5;
+			}// resolve idy
+			else if (beacon == 2) {
+				res_day+=13;
+			}
+		}
+		if (beacon == 0) res_day+=1;
+		
+		return res_day;
 	}
 
 }

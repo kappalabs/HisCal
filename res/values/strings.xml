@@ -22,10 +22,23 @@
     <string name="incorrect_format_message">Špatný formát vstupu</string>
     <string name="ante_diem">a. d.</string>
     <string name="pridie">pridie</string>
+    <string name="postridie">postridie</string>
     <string name="kalendis">Kalend.</string>
     <string name="nonis">Non.</string>
     <string name="idus">Idy</string>
     <string name="none"> -- </string>
+    <string name="month_1">leden</string>
+    <string name="month_2">únor</string>
+    <string name="month_3">březen</string>
+    <string name="month_4">duben</string>
+    <string name="month_5">květen</string>
+    <string name="month_6">červen</string>
+    <string name="month_7">červenec</string>
+    <string name="month_8">srpen</string>
+    <string name="month_9">září</string>
+    <string name="month_10">říjen</string>
+    <string name="month_11">listopad</string>
+    <string name="month_12">prosinec</string>
     <string name="rome_month_1">Ianuar.</string>
     <string name="rome_month_2">Februar.</string>
     <string name="rome_month_3">Mart.</string>
@@ -38,7 +51,14 @@
     <string name="rome_month_10">Octobr.</string>
     <string name="rome_month_11">Novembr.</string>
     <string name="rome_month_12">Decembr.</string>
-    <string name="input_hint_rome">římský form.</string>
-    <string name="input_hint_std">desítkový form.</string>
+    <string name="input_hint_rome">římský formát</string>
+    <string name="input_hint_std">desítkový formát</string>
+    <string name="execute">Make it so!</string>
+    <string name="year">rok</string>
+    <string name="day">den</string>
+    <string name="month">měsíc</string>
+    <string name="up">^</string>
+    <string name="down">v</string>
+    <string name="error_message">error</string>
 
 </resources>

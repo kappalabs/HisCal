@@ -1,12 +1,12 @@
 HisCal - Historical Calendar Converter
 ======================================
-**v14.8.18**
+**v14.8.19**
 
 WHAT WORKS
 ----------
-- konverze mezi římskými číslicemi
+- konverze z římské datace do standardního formátu
 
 TODO
 ----
-- dokončení římské datace
-- bononská, křesťanská, cistojánská datace
+- otestování a cleanup římské datace
+- bononská, křesťanská, cisiojánská datace
