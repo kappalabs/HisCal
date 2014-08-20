@@ -25,6 +25,13 @@ public abstract class Converter {
 	    }
 	};
 	
+	static boolean isStepYear(int year) {
+		if (year%4 != 0) return false;
+		else if (year%100 != 0) return true;
+		else if (year%400 != 0) return false;
+		else return true;
+	}
+	
 	/**
 	 * Method for converting different calendars years.
 	 * Returns year in standard format of null if input is

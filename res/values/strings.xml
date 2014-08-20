@@ -60,5 +60,7 @@
     <string name="up">^</string>
     <string name="down">v</string>
     <string name="error_message">error</string>
+    <string name="reset">Reset</string>
+    <string name="bis">bis</string>
 
 </resources>

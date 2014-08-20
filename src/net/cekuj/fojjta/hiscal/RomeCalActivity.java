@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,11 +20,12 @@ public class RomeCalActivity extends Activity {
 	
 	RomeConverter romec;
 	
-	Button i_b, v_b, x_b, l_b, c_b, d_b, m_b, back_b, execute_b, toggle_input_b;
+	Button i_b, v_b, x_b, l_b, c_b, d_b, m_b, back_b, execute_b, toggle_input_b, reset_b;
 	EditText year_rome_et, year_std_et, day_rome_et, day_std_et;
 	TextView day_std_tv, month_std_tv, year_std_tv;
 	Spinner prefix_sp, beacons_sp, months_sp;
 	Resources res;
+	CheckBox bis_chb;
 	
 	boolean upper_input_active=true;
 
@@ -80,8 +82,16 @@ public class RomeCalActivity extends Activity {
 				toggleInputFocus();
 			}
 		});
+		reset_b = (Button) findViewById(R.id.reset_button);
+		reset_b.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				resetInputs();
+			}
+		});
 		
 		year_rome_et = (EditText) findViewById(R.id.rome_year_editText);
+		year_rome_et.setBackgroundColor(res.getColor(R.color.selected));
 //		year_rome_et.addTextChangedListener(new TextWatcher() {
 //			
 //			@Override
@@ -126,6 +136,8 @@ public class RomeCalActivity extends Activity {
 		day_std_tv = (TextView) findViewById(R.id.std_day_textView);
 		month_std_tv = (TextView) findViewById(R.id.std_month_textView);
 		year_std_tv = (TextView) findViewById(R.id.std_year_textView);
+		
+		bis_chb = (CheckBox) findViewById(R.id.bis_checkBox);
 	}
 
 	@Override
@@ -157,23 +169,48 @@ public class RomeCalActivity extends Activity {
 		}
 	}
 	
+	private void resetInputs() {
+		upper_input_active = true;
+		
+		year_rome_et.setBackgroundColor(res.getColor(R.color.selected));
+		year_rome_et.setText("");
+		year_std_et.setText("0");
+		day_rome_et.setBackgroundColor(0);
+		day_rome_et.setText("");
+		day_std_et.setText("0");
+		
+		day_std_tv.setText("");
+		month_std_tv.setText("");
+		year_std_tv.setText("");
+		
+		prefix_sp.setSelection(0);
+		beacons_sp.setSelection(0);
+		months_sp.setSelection(0);
+	}
+	
 	private void toggleInputFocus() {
-		if(upper_input_active) day_rome_et.requestFocus();
-		else year_rome_et.requestFocus();
+		if(upper_input_active) {
+			day_rome_et.setBackgroundColor(res.getColor(R.color.selected));
+			year_rome_et.setBackgroundColor(0);
+		}
+		else {
+			year_rome_et.setBackgroundColor(res.getColor(R.color.selected));
+			day_rome_et.setBackgroundColor(0);
+		}
 		
 		upper_input_active ^= true;
 	}
 	
 	private void countEverything() {
-		writeYear(year_rome_et.getText().toString().toUpperCase());
+//		writeYear(year_rome_et.getText().toString().toUpperCase());
 //		writeMonth(months_sp.getSelectedItem().toString());
-		writeMonthAndDay(prefix_sp.getSelectedItem().toString(),
+		writeConversion(prefix_sp.getSelectedItem().toString(),
 				beacons_sp.getSelectedItem().toString(),
 				months_sp.getSelectedItem().toString());
 	}
 	
 	//TODO
-	private void writeMonthAndDay(String prefix, String beacon, String romanMonth) {
+	private void writeConversion(String prefix, String beacon, String romanMonth) {
 		int prefixIndx = resolveIndexInResArray(R.array.roman_prefix, prefix);
 		int beaconIndx = resolveIndexInResArray(R.array.roman_beacons, beacon);
 		int monIndx = resolveIndexInResArray(R.array.roman_months, romanMonth);
@@ -187,16 +224,32 @@ public class RomeCalActivity extends Activity {
 		}
 		ndays = Integer.parseInt(day_std_et.getText().toString());
 		
+		String tr_year = romanToStd(year_rome_et.getText().toString().toUpperCase());
+		
 		int day = romec.toStdDay(ndays, prefixIndx, beaconIndx, monIndx);
 		// rotate months and resolve new date
 		if (day<=0) {
-			monIndx = (monIndx+11)%12;
+//			monIndx = (monIndx+11)%12;
+			monIndx--;
+			// rotate also year
+			if (monIndx<0) {
+				monIndx += 12;
+				if (isNumeric(tr_year))
+					tr_year = Integer.valueOf(tr_year)-1 +"";
+			}
 			day = Converter.Month.getIthMonth(monIndx+1).days + day;
 		}
+		if (isNumeric(tr_year) && Converter.isStepYear(Integer.valueOf(tr_year)) && monIndx==1) {
+			if (day>24) day++;
+			else if (day==24 && !bis_chb.isChecked()) day++;
+		}
 
+		// Write calculated year
+		year_std_tv.setText(tr_year);
+		
 		// Write calculated month
-		String tr = resolveIthResArrayString(R.array.std_months, monIndx);
-		month_std_tv.setText(tr + " ");
+		String tr_day = resolveIthResArrayString(R.array.std_months, monIndx);
+		month_std_tv.setText(tr_day + " ");
 		
 		// Write calculated day
 		day_std_tv.setText(day + ". ");
