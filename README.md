@@ -1,6 +1,6 @@
 HisCal - Historical Calendar Converter
 ======================================
-**v14.8.19**
+**v14.8.21**
 
 WHAT WORKS
 ----------

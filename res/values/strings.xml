@@ -18,7 +18,7 @@
     <string name="C">C</string>
     <string name="D">D</string>
     <string name="M">M</string>
-    <string name="backspace">&lt;x|</string>
+    <string name="backspace">&lt;x</string><string name="up">^</string>
     <string name="incorrect_format_message">Špatný formát vstupu</string>
     <string name="ante_diem">a. d.</string>
     <string name="pridie">pridie</string>
@@ -51,13 +51,13 @@
     <string name="rome_month_10">Octobr.</string>
     <string name="rome_month_11">Novembr.</string>
     <string name="rome_month_12">Decembr.</string>
-    <string name="input_hint_rome">římský formát</string>
-    <string name="input_hint_std">desítkový formát</string>
+    <string name="input_hint_rome">roman</string>
+    <string name="input_hint_std">decimal</string>
     <string name="execute">Make it so!</string>
     <string name="year">rok</string>
     <string name="day">den</string>
     <string name="month">měsíc</string>
-    <string name="up">^</string>
+    
     <string name="down">v</string>
     <string name="error_message">error</string>
     <string name="reset">Reset</string>

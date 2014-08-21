@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="transparent">#00000000</color>
     <color name="translucent_red">#FF3300</color>
     <color name="white_opaque">#00FFFFFF</color>
     <color name="selected">#B2FFCC</color>
+    <color name="light_brown">#D6C2AD</color>
+    <color name="darker_brown">#B8A08A</color>
+    <color name="dark_brown">#AD855C</color>
     
 </resources>

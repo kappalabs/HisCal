@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/AppTheme"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_1" >
     
-    <ScrollView >
-        <TableLayout 
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:orientation="vertical">
-    
-
-    <TextView
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:padding="15dp"
+    	android:orientation="vertical" >
+	    
+	<TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
         <TextView
@@ -32,14 +30,15 @@
 
         <EditText
             android:id="@+id/rome_year_editText"
-            android:focusable="false"
-            android:enabled="false"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:enabled="false"
+            android:focusable="false"
             android:hint="@string/input_hint_rome"
             android:inputType="textCapCharacters" />
+
 <!--
             <requestFocus />
         </Spinner>
@@ -47,80 +46,105 @@
 
         <EditText
             android:id="@+id/std_year_editText"
-            android:focusable="false"
-            android:enabled="false"
-            android:layout_width="0dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:enabled="false"
+            android:focusable="false"
             android:hint="@string/input_hint_std"
             android:inputType="text|number" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal" >
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    
+    	<LinearLayout
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_gravity="left|center_vertical|center_horizontal"
+    	    android:gravity="center_horizontal" >
 
         <Button
             android:id="@+id/I_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/I" />
 
         <Button
             android:id="@+id/V_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/V" />
 
         <Button
             android:id="@+id/X_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/X" />
 
         <Button
             android:id="@+id/L_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/L" />
 
         <Button
             android:id="@+id/C_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/C" />
 
         <Button
             android:id="@+id/D_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/D" />
 
         <Button
             android:id="@+id/M_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/M" />
 
         <Button
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/backspace" />
 
         <Button
             android:id="@+id/toggle_input_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
             android:text="@string/up" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/test_ib"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="1dp"
+            android:background="@color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/button_test" />
+
+    	</LinearLayout>
+    </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
         <TextView
@@ -132,28 +156,30 @@
 
         <EditText
             android:id="@+id/rome_day_editText"
-            android:focusable="false"
-            android:enabled="false"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:enabled="false"
+            android:focusable="false"
             android:hint="@string/input_hint_rome"
             android:inputType="textCapCharacters" />
 
         <EditText
             android:id="@+id/std_day_editText"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:enabled="false"
+            android:focusable="false"
             android:hint="@string/input_hint_std"
             android:inputType="text|number" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
         <Spinner
@@ -186,7 +212,7 @@
         android:text="@string/bis" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
         <TextView
@@ -214,15 +240,15 @@
         android:id="@+id/execute_button"
         android:layout_width="fill_parent"
         android:layout_height="84dp"
+        android:layout_margin="5dp"
         android:text="@string/execute" />
 
     <Button
         android:id="@+id/reset_button"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:text="@string/reset" />
     
-    </TableLayout>
-    </ScrollView>
-
-</TableLayout>
+    </LinearLayout>
+</ScrollView>

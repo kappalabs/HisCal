@@ -2,6 +2,8 @@ package net.cekuj.fojjta.hiscal;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.graphics.AvoidXfermode.Mode;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,8 +15,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.graphics.PorterDuff;
 
 public class RomeCalActivity extends Activity {
 	
@@ -36,21 +41,30 @@ public class RomeCalActivity extends Activity {
 		
 		res = getResources();
 		romec = new RomeConverter();
+		
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Roman_SD.ttf");
 
 		i_b = (Button) findViewById(R.id.I_button);
 		i_b.setOnClickListener(new MiniKeyBoard());
+		i_b.setTypeface(font);
 		v_b = (Button) findViewById(R.id.V_button);
 		v_b.setOnClickListener(new MiniKeyBoard());
+		v_b.setTypeface(font);
 		x_b = (Button) findViewById(R.id.X_button);
 		x_b.setOnClickListener(new MiniKeyBoard());
+		x_b.setTypeface(font);
 		l_b = (Button) findViewById(R.id.L_button);
 		l_b.setOnClickListener(new MiniKeyBoard());
+		l_b.setTypeface(font);
 		c_b = (Button) findViewById(R.id.C_button);
 		c_b.setOnClickListener(new MiniKeyBoard());
+		c_b.setTypeface(font);
 		d_b = (Button) findViewById(R.id.D_button);
 		d_b.setOnClickListener(new MiniKeyBoard());
+		d_b.setTypeface(font);
 		m_b = (Button) findViewById(R.id.M_button);
 		m_b.setOnClickListener(new MiniKeyBoard());
+		m_b.setTypeface(font);
 		back_b = (Button) findViewById(R.id.back_button);
 		back_b.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -90,8 +104,19 @@ public class RomeCalActivity extends Activity {
 			}
 		});
 		
+		ImageButton test_ib = (ImageButton) findViewById(R.id.test_ib);
+		test_ib.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getBaseContext(), "Ahoj!", Toast.LENGTH_SHORT).show();
+			}
+		});
+		
 		year_rome_et = (EditText) findViewById(R.id.rome_year_editText);
-		year_rome_et.setBackgroundColor(res.getColor(R.color.selected));
+		year_rome_et.setTypeface(font);
+		year_rome_et.getBackground().setColorFilter(
+				getResources().getColor(R.color.selected),
+				android.graphics.PorterDuff.Mode.MULTIPLY);
 //		year_rome_et.addTextChangedListener(new TextWatcher() {
 //			
 //			@Override
@@ -114,6 +139,7 @@ public class RomeCalActivity extends Activity {
 		year_std_et = (EditText) findViewById(R.id.std_year_editText);
 		
 		day_rome_et = (EditText) findViewById(R.id.rome_day_editText);
+		day_rome_et.setTypeface(font);
 //		day_rome_et.addTextChangedListener(new TextWatcher() {
 //			
 //			@Override
@@ -138,12 +164,13 @@ public class RomeCalActivity extends Activity {
 		year_std_tv = (TextView) findViewById(R.id.std_year_textView);
 		
 		bis_chb = (CheckBox) findViewById(R.id.bis_checkBox);
+		bis_chb.setTypeface(font);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.calendar, menu);
+//		getMenuInflater().inflate(R.menu.calendar, menu);
 		return true;
 	}
 
@@ -152,10 +179,10 @@ public class RomeCalActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -172,11 +199,20 @@ public class RomeCalActivity extends Activity {
 	private void resetInputs() {
 		upper_input_active = true;
 		
-		year_rome_et.setBackgroundColor(res.getColor(R.color.selected));
+		bis_chb.setChecked(false);
+
+		// Select year_rome_et
+		year_rome_et.getBackground().setColorFilter(
+				getResources().getColor(R.color.selected),
+				android.graphics.PorterDuff.Mode.MULTIPLY);
 		year_rome_et.setText("");
+		year_rome_et.invalidate();
 		year_std_et.setText("0");
-		day_rome_et.setBackgroundColor(0);
+		// Unselect day_rome_et
+		day_rome_et.setBackgroundDrawable(
+				res.getDrawable(android.R.drawable.edit_text));
 		day_rome_et.setText("");
+		day_rome_et.invalidate();
 		day_std_et.setText("0");
 		
 		day_std_tv.setText("");
@@ -190,14 +226,26 @@ public class RomeCalActivity extends Activity {
 	
 	private void toggleInputFocus() {
 		if(upper_input_active) {
-			day_rome_et.setBackgroundColor(res.getColor(R.color.selected));
-			year_rome_et.setBackgroundColor(0);
+			// Select day_rome_et
+			day_rome_et.getBackground().setColorFilter(
+					getResources().getColor(R.color.selected),
+					android.graphics.PorterDuff.Mode.MULTIPLY);
+			
+			// Unselect year_rome_et
+			year_rome_et.setBackgroundDrawable(res.getDrawable(android.R.drawable.edit_text));
 		}
 		else {
-			year_rome_et.setBackgroundColor(res.getColor(R.color.selected));
-			day_rome_et.setBackgroundColor(0);
+			// Select year_rome_et
+			year_rome_et.getBackground().setColorFilter(
+					getResources().getColor(R.color.selected),
+					android.graphics.PorterDuff.Mode.MULTIPLY);
+
+			// Unselect day_rome_et
+			day_rome_et.setBackgroundDrawable(res.getDrawable(android.R.drawable.edit_text));
 		}
 		
+		year_rome_et.invalidate();
+		day_rome_et.invalidate();
 		upper_input_active ^= true;
 	}
 	
@@ -243,6 +291,14 @@ public class RomeCalActivity extends Activity {
 			if (day>24) day++;
 			else if (day==24 && !bis_chb.isChecked()) day++;
 		}
+		
+		String errorM = res.getString(R.string.incorrect_format_message);
+		if (day<=0) {
+			year_std_tv.setText(errorM);
+			month_std_tv.setText("");
+			day_std_tv.setText("");
+			return;
+		}
 
 		// Write calculated year
 		year_std_tv.setText(tr_year);
@@ -284,7 +340,6 @@ public class RomeCalActivity extends Activity {
 			year_rome_et.setText(romanYear);
 		String tr = romanToStd(romanYear);
 		
-		year_std_tv.setText(tr);
 		year_std_et.setText(tr);
 	}
 	
