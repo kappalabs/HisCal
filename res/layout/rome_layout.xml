@@ -58,87 +58,77 @@
     </LinearLayout>
 
     <HorizontalScrollView
-        android:id="@+id/horizontalScrollView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
     
     	<LinearLayout
     	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
+    	    android:layout_height="45dp"
     	    android:layout_gravity="left|center_vertical|center_horizontal"
     	    android:gravity="center_horizontal" >
 
         <Button
             android:id="@+id/I_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/I" />
+            android:layout_margin="2dp"
+            android:background="@drawable/i" />
 
         <Button
             android:id="@+id/V_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/V" />
+            android:layout_margin="2dp"
+            android:background="@drawable/v" />
 
         <Button
             android:id="@+id/X_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/X" />
+            android:layout_margin="2dp"
+            android:background="@drawable/x" />
 
         <Button
             android:id="@+id/L_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/L" />
+            android:layout_margin="2dp"
+            android:background="@drawable/l" />
 
         <Button
             android:id="@+id/C_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/C" />
+            android:layout_margin="2dp"
+            android:background="@drawable/c" />
 
         <Button
             android:id="@+id/D_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/D" />
+            android:layout_margin="2dp"
+            android:background="@drawable/d" />
 
         <Button
             android:id="@+id/M_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/M" />
+            android:layout_margin="2dp"
+            android:background="@drawable/m" />
 
         <Button
             android:id="@+id/back_button"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/backspace" />
+            android:layout_margin="2dp"
+            android:background="@drawable/back" />
 
         <Button
-            android:id="@+id/toggle_input_button"
-            android:layout_width="wrap_content"
+            android:id="@+id/toggle_button"
+            android:layout_width="45dp"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:text="@string/up" />
-
-        <ImageButton
-            android:id="@+id/test_ib"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="1dp"
-            android:background="@color/transparent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/button_test" />
+            android:layout_margin="2dp"
+            android:background="@drawable/toggle" />
 
     	</LinearLayout>
     </HorizontalScrollView>

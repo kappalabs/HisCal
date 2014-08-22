@@ -8,17 +8,22 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 import android.graphics.PorterDuff;
 
 public class RomeCalActivity extends Activity {
@@ -46,24 +51,31 @@ public class RomeCalActivity extends Activity {
 
 		i_b = (Button) findViewById(R.id.I_button);
 		i_b.setOnClickListener(new MiniKeyBoard());
+		i_b.setOnTouchListener(new ImageToggler());
 		i_b.setTypeface(font);
 		v_b = (Button) findViewById(R.id.V_button);
 		v_b.setOnClickListener(new MiniKeyBoard());
+		v_b.setOnTouchListener(new ImageToggler());
 		v_b.setTypeface(font);
 		x_b = (Button) findViewById(R.id.X_button);
 		x_b.setOnClickListener(new MiniKeyBoard());
+		x_b.setOnTouchListener(new ImageToggler());
 		x_b.setTypeface(font);
 		l_b = (Button) findViewById(R.id.L_button);
 		l_b.setOnClickListener(new MiniKeyBoard());
+		l_b.setOnTouchListener(new ImageToggler());
 		l_b.setTypeface(font);
 		c_b = (Button) findViewById(R.id.C_button);
 		c_b.setOnClickListener(new MiniKeyBoard());
+		c_b.setOnTouchListener(new ImageToggler());
 		c_b.setTypeface(font);
 		d_b = (Button) findViewById(R.id.D_button);
 		d_b.setOnClickListener(new MiniKeyBoard());
+		d_b.setOnTouchListener(new ImageToggler());
 		d_b.setTypeface(font);
 		m_b = (Button) findViewById(R.id.M_button);
 		m_b.setOnClickListener(new MiniKeyBoard());
+		m_b.setOnTouchListener(new ImageToggler());
 		m_b.setTypeface(font);
 		back_b = (Button) findViewById(R.id.back_button);
 		back_b.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +94,7 @@ public class RomeCalActivity extends Activity {
 				
 			}
 		});
+		back_b.setOnTouchListener(new ImageToggler());
 		execute_b = (Button) findViewById(R.id.execute_button);
 		execute_b.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -89,13 +102,14 @@ public class RomeCalActivity extends Activity {
 				countEverything();
 			}
 		});
-		toggle_input_b = (Button) findViewById(R.id.toggle_input_button);
+		toggle_input_b = (Button) findViewById(R.id.toggle_button);
 		toggle_input_b.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				toggleInputFocus();
 			}
 		});
+		toggle_input_b.setOnTouchListener(new ImageToggler());
 		reset_b = (Button) findViewById(R.id.reset_button);
 		reset_b.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -104,55 +118,15 @@ public class RomeCalActivity extends Activity {
 			}
 		});
 		
-		ImageButton test_ib = (ImageButton) findViewById(R.id.test_ib);
-		test_ib.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getBaseContext(), "Ahoj!", Toast.LENGTH_SHORT).show();
-			}
-		});
-		
 		year_rome_et = (EditText) findViewById(R.id.rome_year_editText);
 		year_rome_et.setTypeface(font);
 		year_rome_et.getBackground().setColorFilter(
 				getResources().getColor(R.color.selected),
 				android.graphics.PorterDuff.Mode.MULTIPLY);
-//		year_rome_et.addTextChangedListener(new TextWatcher() {
-//			
-//			@Override
-//			public void onTextChanged(CharSequence s, int start, int before, int count) {
-//				writeYear(year_rome_et.getText().toString().toUpperCase());
-//			}
-//			
-//			@Override
-//			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//			
-//			@Override
-//			public void afterTextChanged(Editable s) {}
-//		});
-//		year_rome_et.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				writeYear(year_rome_et.getText().toString().toUpperCase());
-//			}
-//		});
 		year_std_et = (EditText) findViewById(R.id.std_year_editText);
 		
 		day_rome_et = (EditText) findViewById(R.id.rome_day_editText);
 		day_rome_et.setTypeface(font);
-//		day_rome_et.addTextChangedListener(new TextWatcher() {
-//			
-//			@Override
-//			public void onTextChanged(CharSequence s, int start, int before, int count) {
-//				writeDay(day_rome_et.getText().toString().toUpperCase());
-//			}
-//			
-//			@Override
-//			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//			
-//			@Override
-//			public void afterTextChanged(Editable s) {}
-//		});
 		day_std_et = (EditText) findViewById(R.id.std_day_editText);
 		
 		prefix_sp = (Spinner) findViewById(R.id.prefix_spinner);
@@ -189,11 +163,36 @@ public class RomeCalActivity extends Activity {
 	class MiniKeyBoard implements View.OnClickListener {
 		@Override
 		public void onClick(View v) {
+			String idname = res.getResourceEntryName(v.getId());
+			String s = idname.split("_")[0];
 			if (upper_input_active)
-				writeYearChar(((Button)v).getText().toString());
+				writeYearChar(s);
 			else
-				writeDayChar(((Button)v).getText().toString());
+				writeDayChar(s);
 		}
+	}
+	
+	class ImageToggler implements View.OnTouchListener {
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			String idname = res.getResourceEntryName(v.getId());
+			String norname = idname.split("_")[0].toLowerCase();
+			String pushed = norname + "_push";
+			
+			int id;
+			if(event.getAction()==MotionEvent.ACTION_DOWN) {
+				id = res.getIdentifier(getPackageName()
+						+ ":drawable/" + pushed, null, null);
+				v.setBackgroundDrawable(res.getDrawable(id));
+			}
+			else {
+				id = res.getIdentifier(getPackageName()
+						+ ":drawable/" + norname, null, null);
+				v.setBackgroundDrawable(res.getDrawable(id));
+			}
+			return false;
+		}
+		
 	}
 	
 	private void resetInputs() {
@@ -257,7 +256,6 @@ public class RomeCalActivity extends Activity {
 				months_sp.getSelectedItem().toString());
 	}
 	
-	//TODO
 	private void writeConversion(String prefix, String beacon, String romanMonth) {
 		int prefixIndx = resolveIndexInResArray(R.array.roman_prefix, prefix);
 		int beaconIndx = resolveIndexInResArray(R.array.roman_beacons, beacon);
@@ -312,7 +310,7 @@ public class RomeCalActivity extends Activity {
 	}
 	
 	public boolean isNumeric(String str) {
-		try { int x = Integer.parseInt(str); }
+		try { Integer.parseInt(str); }
 		catch(NumberFormatException nfe)
 		{ return false; } return true;
 	}
