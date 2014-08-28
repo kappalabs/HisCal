@@ -1,6 +1,7 @@
-package net.cekuj.fojjta.hiscal;
+package net.cekuj.fojjta.hiscal.Converters;
 
-public class RomeConverter extends Converter {
+
+public class RomanConverter extends Converter {
 
 	enum Romans {
 		I(1), V(5), X(10), L(50), C(100), D(500), M(1000);
@@ -9,11 +10,11 @@ public class RomeConverter extends Converter {
 	};
 	
 	@Override
-	String toStdYear(String romanYear) {
+	public String toStdYear(String romanYear) {
 		return toDecimalNumber(romanYear);
 	}
 	
-	String toDecimalNumber(String romanYear) {
+	public String toDecimalNumber(String romanYear) {
 		romanYear=romanYear.toUpperCase();
 		int ret = 0;
 		int strLen = romanYear.length();
@@ -73,8 +74,7 @@ public class RomeConverter extends Converter {
 		return null;
 	}
 	
-	//TODO
-	int toStdDay(int n_days, int prefix, int beacon, int monthNum) {
+	public int toStdDay(int n_days, int prefix, int beacon, int monthNum) {
 		int res_day=0;
 		switch (prefix) {
 			case 0: break;
@@ -82,8 +82,6 @@ public class RomeConverter extends Converter {
 			case 2: res_day = -1; break;
 			case 3: res_day = +1; break;
 		}
-		
-//		int m_days = Month.getIthMonth(monthNum+1).days;
 		
 		// Martinus, Maius, Quintilis=October
 		if (monthNum==2 || monthNum==4 || monthNum==9) {
@@ -106,6 +104,12 @@ public class RomeConverter extends Converter {
 		if (beacon == 0) res_day+=1;
 		
 		return res_day;
+	}
+
+	@Override
+	public Integer[] toStdDate(Object[] params) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

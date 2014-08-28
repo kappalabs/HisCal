@@ -15,9 +15,11 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:paddingBottom="15dp"
-	    android:text="@string/cal_rome"
+	    android:text="@string/cal_bonon"
 	    android:textAppearance="?android:attr/textAppearanceLarge" />
-
+	    
+	
+		
     	<LinearLayout
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content" >
@@ -131,7 +133,7 @@
 	
     		</LinearLayout>
     	</HorizontalScrollView>
-
+    
     	<LinearLayout
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content" >
@@ -166,86 +168,112 @@
             	android:inputType="text|number" />
 	
 	    </LinearLayout>
+			<LinearLayout
+				android:layout_width="match_parent"
+    	    	android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+    	    		<TextView
+    	    		    android:id="@+id/textView4"
+    	    		    android:layout_width="wrap_content"
+    	    		    android:layout_height="wrap_content"
+    	    		    android:text="@string/die_label"
+    	    		    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Spinner
-            android:id="@+id/prefix_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/my_spinner"
-            android:entries="@array/roman_prefix" />
+    	    		<Spinner
+    	    		    android:id="@+id/mparts_spinner"
+    	    		    android:layout_width="wrap_content"
+    	    		    android:layout_height="wrap_content"
+    	    		    android:layout_margin="5dp"
+    	    		    android:layout_weight="1"
+    	    		    android:background="@drawable/my_spinner"
+    	    		    android:entries="@array/bonon_month_parts" />
 
-        <Spinner
-            android:id="@+id/beacons_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/my_spinner"
-            android:entries="@array/roman_beacons" />
+    	    	</LinearLayout>
 
-        <Spinner
-            android:id="@+id/months_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/my_spinner"
-            android:entries="@array/roman_months" />
+    	    	<LinearLayout
+    	    	    android:layout_width="match_parent"
+    	    	    android:layout_height="wrap_content" >
 
-    </LinearLayout>
+    	    		<TextView
+    	    		    android:id="@+id/textView5"
+    	    		    android:layout_width="wrap_content"
+    	    		    android:layout_height="wrap_content"
+    	    		    android:text="@string/or"
+    	    		    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <CheckBox
-        android:id="@+id/bis_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bis" />
+    	    		<Spinner
+    	    		    android:id="@+id/mbeacons_spinner"
+    	    		    android:layout_width="wrap_content"
+    	    		    android:layout_height="wrap_content"
+    	    		    android:layout_margin="5dp"
+    	    		    android:layout_weight="1"
+    	    		    android:background="@drawable/my_spinner"
+    	    		    android:entries="@array/bonon_beacons" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+    	    	</LinearLayout>
 
-        <TextView
-            android:id="@+id/std_day_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+    	    	<LinearLayout
+    	    	    android:layout_width="match_parent"
+    	    	    android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/std_month_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+    	    		<TextView
+    	    		    android:id="@+id/textView6"
+    	    		    android:layout_width="wrap_content"
+    	    		    android:layout_height="wrap_content"
+    	    		    android:text="@string/month_label"
+    	    		    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/std_year_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+    	    		<Spinner
+    	    		    android:id="@+id/months_spinner"
+    	    		    android:layout_width="wrap_content"
+    	    		    android:layout_height="wrap_content"
+    	    		    android:layout_margin="5dp"
+    	    		    android:layout_weight="1"
+    	    		    android:background="@drawable/my_spinner"
+    	    		    android:entries="@array/roman_months" />
 
-    </LinearLayout>
+    	    	</LinearLayout>
+    	    	
+	        	<LinearLayout
+        			android:layout_width="fill_parent"
+        			android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/execute_button"
-        android:layout_width="fill_parent"
-        android:layout_height="75dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/my_button"
-        android:text="@string/execute" />
-
-    <Button
-        android:id="@+id/reset_button"
-        android:layout_width="fill_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/my_button"
-        android:text="@string/reset" />
-    
+        			<TextView
+            			android:id="@+id/std_day_textView"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"
+            			android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+        			<TextView
+	            		android:id="@+id/std_month_textView"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"
+            			android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	        		<TextView
+            			android:id="@+id/std_year_textView"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"
+            			android:gravity="center_horizontal"
+            			android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	   	 		</LinearLayout>
+	
+	    	<Button
+        		android:id="@+id/execute_button"
+        		android:layout_width="fill_parent"
+        		android:layout_height="75dp"
+        		android:layout_marginBottom="5dp"
+        		android:background="@drawable/my_button"
+        		android:text="@string/execute" />
+	
+	    	<Button
+				android:id="@+id/reset_button"
+        		android:layout_width="fill_parent"
+        		android:layout_height="55dp"
+        		android:layout_marginTop="5dp"
+        		android:background="@drawable/my_button"
+        		android:text="@string/reset" />
+	    
     </LinearLayout>
 </ScrollView>

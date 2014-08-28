@@ -46,4 +46,14 @@
         <item >@string/nonis</item>
         <item >@string/idus</item>
     </string-array>
+    <string-array name="bonon_month_parts">
+        <item >@string/none</item>
+        <item >@string/bonon_month_part_1</item>
+        <item >@string/bonon_month_part_2</item>
+    </string-array>
+    <string-array name="bonon_beacons">
+        <item >@string/none</item>
+        <item >@string/penultimus</item>
+        <item >@string/ultimus</item>
+    </string-array>
 </resources>

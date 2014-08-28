@@ -18,7 +18,8 @@
     <string name="C">C</string>
     <string name="D">D</string>
     <string name="M">M</string>
-    <string name="backspace">&lt;x</string><string name="up">^</string>
+    <string name="backspace">&lt;x</string>
+    <string name="up">^</string>
     <string name="incorrect_format_message">Špatný formát vstupu</string>
     <string name="ante_diem">a. d.</string>
     <string name="pridie">pridie</string>
@@ -57,10 +58,19 @@
     <string name="year">rok</string>
     <string name="day">den</string>
     <string name="month">měsíc</string>
-    
     <string name="down">v</string>
     <string name="error_message">error</string>
     <string name="reset">Reset</string>
     <string name="bis">bis</string>
+    <string name="title_activity_bonon_cal">BononCalActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="dies_label">dies</string>
+    <string name="die_label">die</string>
+    <string name="bonon_month_part_1">intrants</string>
+    <string name="bonon_month_part_2">exiens</string>
+    <string name="penultimus">penultimus</string>
+    <string name="ultimus">ultimus</string>
+    <string name="month_label">Měsíc:</string>
+    <string name="or">nebo</string>
 
 </resources>

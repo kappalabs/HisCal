@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="net.cekuj.fojjta.hiscal"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.cekuj.fojjta.hiscal"
     android:versionCode="1"
-    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -22,8 +23,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="RomeCalActivity"
-            android:label="@string/cal_rome">
+            android:name=".RomanCalActivity"
+            android:label="@string/cal_rome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.cekuj.fojjta.hiscal.MainScr" />
+        </activity>
+        <activity
+            android:name=".BononCalActivity"
+            android:label="@string/title_activity_bonon_cal" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.cekuj.fojjta.hiscal.MainScr" />

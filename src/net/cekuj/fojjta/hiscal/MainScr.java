@@ -28,12 +28,16 @@ public class MainScr extends Activity {
 				String item = ((TextView)arg1).getText().toString();
                 
                 //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
-
+				
+				Intent intent;
                 if (item.equals(getResources().getString(R.string.cal_rome))) {
-                	Intent intent = new Intent(MainScr.this, RomeCalActivity.class);
+                	intent = new Intent(MainScr.this, RomanCalActivity.class);
                 	//    String message = editText.getText().toString();
                 	//String EXTRA_MESSAGE="extra";
                 	//intent.putExtra(EXTRA_MESSAGE, message);
+                	startActivity(intent);
+                } else if (item.equals(getResources().getString(R.string.cal_bonon))) {
+                	intent = new Intent(MainScr.this, BononCalActivity.class);
                 	startActivity(intent);
                 }
 			}

@@ -1,10 +1,11 @@
 HisCal - Historical Calendar Converter
 ======================================
-**v14.8.22.11**
+**v14.8.28**
 
 WHAT WORKS
 ----------
 - konverze z římské datace do standardního formátu
+- konverze z bononské datace do standardního formátu
 
 INSTALLATION
 ------------
@@ -12,5 +13,6 @@ INSTALLATION
 
 TODO
 ----
-- otestování a cleanup římské datace
-- bononská, křesťanská, cisiojánská datace
+- otestování bononské datace
+- křesťanská, cisiojánská datace
+- grafické rozvržení
